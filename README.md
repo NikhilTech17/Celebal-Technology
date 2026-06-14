@@ -154,3 +154,45 @@ DB Browser for SQLite
 SQL
 Dataset
 # Superstore Sales Dataset link: https://www.kaggle.com/datasets/vivek468/superstore-dataset
+
+
+# celebal-week4-assignment
+# Azure Cloud Fundamentals and Data Pipeline Implementation using Azure Data Factory
+# Objective
+To understand Azure cloud concepts and build an end-to-end data pipeline using Azure Storage Account and Azure Data Factory (ADF).
+
+# Project Overview
+This project demonstrates the creation of a complete data integration workflow in Microsoft Azure. A CSV dataset was uploaded to Azure Blob Storage and processed through Azure Data Factory. The pipeline validates file metadata and copies the data from a source container to a destination container.
+
+# Services Used
+Azure Resource Group
+Azure Storage Account
+Azure Blob Storage
+Azure Data Factory (ADF)
+Azure IAM (Reader and Contributor Roles)
+
+# Implementation Steps
+Created a Resource Group in Azure.
+Created a Storage Account and Blob Containers.
+Uploaded the CSV dataset to the source container.
+Created Azure Data Factory and explored Author, Monitor, and Manage modules.
+Configured a Linked Service to connect ADF with Azure Blob Storage.
+Created Source and Destination Datasets.
+Used the Get Metadata activity to retrieve file details.
+Built a pipeline using the Copy Data activity.
+Executed the pipeline using Debug/Trigger.
+Monitored pipeline execution in ADF Monitor.
+Assigned IAM roles (Reader and Contributor) to ensure secure access.
+Validated metadata and successfully copied the file to the destination container.
+Pipeline Flow
+Source Blob Storage ↓ Get Metadata ↓ Copy Data Activity ↓ Destination Blob Storage
+
+# Results
+Successfully connected Azure Data Factory to Azure Blob Storage.
+Retrieved file metadata including file name, size, and last modified date.
+Successfully copied the dataset from the source container to the destination container.
+Verified pipeline execution through ADF Monitor.
+Implemented secure access using Azure IAM roles.
+
+# Conclusion
+This project provided hands-on experience with Azure cloud services and Azure Data Factory. An end-to-end data pipeline was successfully implemented, demonstrating data movement, metadata validation, monitoring, and access management within the Azure ecosystem.

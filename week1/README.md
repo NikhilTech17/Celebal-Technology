@@ -43,7 +43,7 @@ Original dataset was taken from Kaggle Shopping Dataset.
 
 ## Output
 
-A cleaned and processed dataset ready for basic data analysis.
+A cleaned and formated dataset ready for basic data analysis.
 
 ## Learning Outcome
 

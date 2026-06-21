@@ -1,0 +1,144 @@
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+from pyspark.sql.types import TimestampType
+
+# Create Spark Session
+spark = SparkSession.builder \
+    .appName("Week5_Spark_Assignment") \
+    .getOrCreate()
+
+# Load Dataset
+df = spark.read.csv(
+    "/content/week5_spark_dataset.csv",
+    header=True,
+    inferSchema=True
+)
+
+# Display Schema
+df.printSchema()
+
+# Display Data
+df.show()
+
+# ==================================================
+# DATA CLEANING
+# ==================================================
+
+# Remove Duplicates based on user_id and transaction_date
+df_clean = df.dropDuplicates(["user_id", "transaction_date"])
+
+# Fill null values
+df_clean = df_clean.na.fill({
+    "status": "Unknown",
+    "price": 0
+})
+
+# Remove rows with null email or empty username
+df_clean = df_clean.filter(
+    col("email").isNotNull() &
+    col("username").isNotNull() &
+    (col("username") != "")
+)
+
+# ==================================================
+# FILTERING OPERATIONS
+# ==================================================
+
+# Age between 18 and 30 with Premium subscription
+premium_users = df_clean.filter(
+    (col("age").between(18, 30)) &
+    (col("subscription") == "Premium")
+)
+
+premium_users.show()
+
+# Region = West
+west_sales = df_clean.filter(col("region") == "West")
+
+west_sales.show()
+
+# ==================================================
+# AGGREGATION FUNCTIONS
+# ==================================================
+
+# Count Records
+df_clean.select(count("*").alias("total_records")).show()
+
+# Sum Sale Amount
+df_clean.select(sum("sale_amount").alias("total_sales")).show()
+
+# Average Sale Amount
+df_clean.select(avg("sale_amount").alias("avg_sales")).show()
+
+# Minimum Price
+df_clean.select(min("price").alias("min_price")).show()
+
+# Maximum Price
+df_clean.select(max("price").alias("max_price")).show()
+
+# ==================================================
+# GROUP BY OPERATIONS
+# ==================================================
+
+# Average sale_amount by product_category in West region
+west_sales.groupBy("product_category") \
+    .agg(avg("sale_amount").alias("avg_sale_amount")) \
+    .show()
+
+# Count records by city
+city_count = df_clean.groupBy("city") \
+    .agg(count("*").alias("city_count"))
+
+city_count.show()
+
+# Cities having count > 100
+city_count.filter(col("city_count") > 100).show()
+
+# Total Revenue by Store
+df_clean.groupBy("store_id") \
+    .agg(sum("price").alias("total_revenue")) \
+    .show()
+
+# ==================================================
+# MULTIPLE AGGREGATIONS
+# ==================================================
+
+df_clean.agg(
+    min("price").alias("min_price"),
+    max("price").alias("max_price"),
+    avg("price").alias("avg_price")
+).show()
+
+# ==================================================
+# SCHEMA MODIFICATION
+# ==================================================
+
+# Cast timestamp column (if exists)
+# Example for raw_timestamp column
+
+# df_clean = df_clean.withColumn(
+#     "event_time",
+#     col("raw_timestamp").cast(TimestampType())
+# ).drop("raw_timestamp")
+
+# Rename Column Example
+df_clean = df_clean.withColumnRenamed(
+    "transaction_date",
+    "txn_date"
+)
+
+# ==================================================
+# FINAL DATA PROCESSING PIPELINE
+# ==================================================
+
+final_result = (
+    df.dropDuplicates(["user_id", "transaction_date"])
+      .na.fill({"price": 0})
+      .groupBy("store_id")
+      .agg(sum("price").alias("total_revenue"))
+)
+
+final_result.show()
+
+# Stop Spark Session
+spark.stop()

@@ -1,0 +1,11 @@
+user_id,transaction_date,username,email,age,subscription,city,region,store_id,product_category,status,price,sale_amount
+1,2025-01-01,john,john@gmail.com,25,Premium,Delhi,West,S101,Electronics,Active,500,500
+2,2025-01-02,alice,alice@gmail.com,32,Basic,Mumbai,South,S102,Furniture,Active,700,700
+3,2025-01-03,bob,,28,Premium,Delhi,West,S101,Electronics,,300,300
+4,2025-01-04,,emma@gmail.com,22,Premium,Chennai,East,S103,Clothing,Active,,450
+5,2025-01-05,mike,mike@gmail.com,40,Basic,Kolkata,North,S104,Electronics,Inactive,900,900
+1,2025-01-01,john,john@gmail.com,25,Premium,Delhi,West,S101,Electronics,Active,500,500
+6,2025-01-06,sarah,sarah@gmail.com,29,Premium,Mumbai,South,S102,Furniture,Active,,800
+7,2025-01-07,david,david@gmail.com,35,Premium,Delhi,West,S101,Electronics,Active,600,600
+8,2025-01-08,chris,chris@gmail.com,18,Premium,Chennai,East,S103,Clothing,Active,350,350
+9,2025-01-09,eva,eva@gmail.com,30,Basic,Kolkata,North,S104,Furniture,Inactive,400,400

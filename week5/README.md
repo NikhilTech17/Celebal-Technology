@@ -16,7 +16,8 @@
 - Built a complete data cleaning and revenue analysis pipeline
 
 ## Files
-- spark code_pyspark.py
+
+- week5_spark_dataframe_operations.py
 - week5_spark_dataset.csv
 - Query_Results.pdf
--week5 Assignment questions and answer.pdf
+- Week5 Assignment Questions and Answers.pdf

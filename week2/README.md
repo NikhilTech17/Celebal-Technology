@@ -76,6 +76,7 @@ Through this assignment, I learned:
 * Aggregation using GROUP BY functions
 * Sorting and limiting query results
 * Solving business problems using SQL
-* Data validation and quality checks
+* Data validation
+* quality checks
 * Managing SQL projects using GitHub
 

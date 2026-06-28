@@ -26,5 +26,4 @@ This project analyzes the Superstore dataset using SQL concepts such as:
 
 ## Dataset
 Superstore Sales Dataset
-link:
-https://www.kaggle.com/datasets/vivek468/superstore-dataset
+link: https://www.kaggle.com/datasets/vivek468/superstore-dataset
